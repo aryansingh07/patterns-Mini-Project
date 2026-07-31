@@ -76,13 +76,17 @@ cd patterns-Mini-Project
 ./gradlew run
 ```
 Or simply open the project in IDE and run 'Main.java'.
+
 ---
 ## Patterns Included
+
 The application currently supports **22 different programming patterns**,
 [Click here to Open patterns document](patterns.md)
+
 ---
 ## License
 This project is licensed under the MIT License.
+
 ---
 ## Author
 **Aryan Singh**
