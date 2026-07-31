@@ -78,4 +78,14 @@ public class ThemeManager {
             }
         }
     }
+    public static String getHtmlBackground() {
+        return darkMode
+                ? "#2B2B2B"
+                : "#FFFFFF";
+    }
+    public static String getHtmlForeground() {
+        return darkMode
+                ? "#FFFFFF"
+                : "#000000";
+    }
 }
