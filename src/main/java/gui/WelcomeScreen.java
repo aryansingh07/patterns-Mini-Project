@@ -2,21 +2,23 @@ package gui;
 
 import components.Constants;
 import components.ThemeManager;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class WelcomeScreen extends JFrame {
+    
     public WelcomeScreen() {
         setTitle("Welcome");
 
         java.net.URL iconURL =
                 getClass().getResource("/pictures/icon.png");
+        
         if (iconURL != null) {
             setIconImage(new ImageIcon(iconURL).getImage());
         }
+        
         setSize(Constants.WELCOME_WIDTH,Constants.WELCOME_HEIGHT);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -24,10 +26,12 @@ public class WelcomeScreen extends JFrame {
 
         JLabel title = new JLabel("Java Pattern Generator",
                 SwingConstants.CENTER);
+        
         title.setFont(new Font("SansSerif", Font.BOLD, 34));
 
         JLabel subtitle = new JLabel("Desktop Edition v1.0",
                 SwingConstants.CENTER);
+        
         subtitle.setFont(new Font("SansSerif", Font.ITALIC,18));
 
         JPanel header = new JPanel(new GridLayout(2,1));
@@ -38,14 +42,31 @@ public class WelcomeScreen extends JFrame {
 
         add(header,BorderLayout.NORTH);
 
-        JEditorPane info = new JEditorPane();
+        JTextPane info = new JTextPane();
         info.setContentType("text/html");
         info.setEditable(false);
-        info.setOpaque(false);
+        info.setOpaque(true);
+        
+        Color bg = ThemeManager.isDarkMode()
+                ? new Color(43,43,43)
+                : UIManager.getColor("Panel.background");
+        Color fg = ThemeManager.isDarkMode()
+                ? Color.WHITE
+                : Color.BLACK;
+
+        info.setBackground(bg);
+        info.setForeground(fg);
+
         info.setText("""
         <html>
-        <body style = "font-family : Sans-Serif;
-                        font-size : 14px; margin:15px;">
+        <body style = "margin : 0;">
+        <div style = "
+            background-color : %s;
+            padding : 15px;
+            font-family : Sans-Serif;
+            font-size : 14px;
+            color : %s;
+        ">
         
         <h2>Welcome!</h2>
         
@@ -69,7 +90,7 @@ public class WelcomeScreen extends JFrame {
         
         <h2>Keyboard Shortcuts</h2>
         
-        <table cellpaddings="5">
+        <table cellpadding="5">
         <tr><td><b>Enter</b></td>-<td>Generate Pattern</td></tr>
         <tr><td><b>Ctrl + G</b></td>-<td>Generate Pattern</td></tr>
         <tr><td><b>Ctrl + S</b></td>-<td>Export Output</td></tr>
@@ -98,14 +119,27 @@ public class WelcomeScreen extends JFrame {
         <b>Developed by Aryan</b><br>
         Java &bull; Swing &bull; Gradle
         </p>
+        </div>
         </body>
         </html>
-        """);
+        """
+        .formatted(
+                ThemeManager.getHtmlBackground(),
+                ThemeManager.getHtmlForeground()
+        ));
 
         ((JComponent) getContentPane()).setBorder(
                 BorderFactory.createEmptyBorder(10,10,10,10)
         );
-        add(new JScrollPane(info), BorderLayout.CENTER);
+        JScrollPane sPane = new JScrollPane(info);
+
+        sPane.getViewport().setBackground(
+                ThemeManager.isDarkMode()
+                ? new Color(43,43,43)
+                        : UIManager.getColor("Panel.background")
+        );
+
+        add(sPane, BorderLayout.CENTER);
 
         JButton startButton = new JButton("Start Application");
 
@@ -122,6 +156,7 @@ public class WelcomeScreen extends JFrame {
                 "Developed by Aryan",
                 SwingConstants.CENTER
         );
+        
         footer.setFont(new Font("SansSerif",Font.PLAIN,12));
 
         JPanel bottom = new JPanel(new BorderLayout());
