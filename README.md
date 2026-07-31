@@ -40,12 +40,14 @@ settings.gradle.kts
 ---
 ## Screenshots
 
-| Welcome Screen | Pattern Generator | Dark Theme | About Dialog |
-| -------------- | ----------------- | ---------- | ------------ |
-| ![Welcome](screenshots/welcome.png) | 
-![Generator](screenshots/generator.png) |
-![DarkTheme](screenshots/dark-theme.png) |
-![AboutDialog](screenshots/about.png) |
+| Welcome Screen | Pattern Generator | Dark Theme |
+| -------------- | ----------------- | ---------- |
+| ![Welcome](/screenshots/welcome-1.png) | ![Generator](/screenshots/generator-1.png) |![DarkTheme](/screenshots/dark-theme-1.png) |
+| ![Welcome](/screenshots/welcome-2.png) | ![Generator](/screenshots/generator-2.png) |![DarkTheme](/screenshots/dark-theme-2.png) |
+| ![Welcome](/screenshots/welcome-3.png) | ![Generator](/screenshots/generator-3.png) |![DarkTheme](/screenshots/dark-theme-3.png) |
+
+### About Dialog
+<img src="/screenshots/about-1.png" width="300">
 
 ---
 ## Technologies Used
